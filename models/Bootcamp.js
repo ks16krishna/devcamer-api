@@ -1,6 +1,6 @@
-const { Mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-const BootcampSchema = new Mongoose.Schema({
+const BootcampSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please add a name"],
@@ -98,11 +98,11 @@ const BootcampSchema = new Mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: true,
-  },
+  // user: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: "User",
+  //   required: true,
+  // },
 });
 
 module.exports = mongoose.model("Bootcamp", BootcampSchema);
