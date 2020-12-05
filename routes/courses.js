@@ -1,5 +1,4 @@
 const express = require("express");
-const { get } = require("mongoose");
 const {
   getCourses,
   getCourse,
@@ -9,11 +8,10 @@ const {
 } = require("../controllers/courses");
 
 const Course = require("../models/Course");
+
 const advancedResults = require("../middleware/advancedResults");
-
-const { protect, authorize } = require("../middleware/auth");
-
 const router = express.Router({ mergeParams: true });
+const { protect, authorize } = require("../middleware/auth");
 
 router
   .route("/")
@@ -25,6 +23,7 @@ router
     getCourses
   )
   .post(protect, authorize("publisher", "admin"), addCourse);
+
 router
   .route("/:id")
   .get(getCourse)
